@@ -1,0 +1,6 @@
+.idea
+*.iml
+*.class
+*.DS_Store
+data/test
+data/train
