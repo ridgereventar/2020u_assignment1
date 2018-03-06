@@ -118,12 +118,30 @@ public class DataSource {
         ArrayList<File> folderList = new ArrayList<>();
         generateSubDirectorys(dir, folderList);
 
+        // displays folder list
+        for(int i=0; i<folderList.size(); i++) {
+            System.out.println(i + " = " + folderList.get(i));
+        }
+
+
         ObservableList<TestFile> files = FXCollections.observableArrayList();
 
         try {
             // process the maps
-            trainHamFreq.processMap(folderList.get(4));
-            trainSpamFreq.processMap(folderList.get(5));
+            // IF USING ONLY HAM AND SPAM FOLDERS: folderList size will be 6
+            if(folderList.size() == 6) {
+                System.out.println("Training using ham,spam...");
+                trainHamFreq.processMap(folderList.get(4));
+                trainSpamFreq.processMap(folderList.get(5));
+            }
+            // IF USING HAM, HAM2, AND SPAM FOLDERS: folderList size will be 7
+            if(folderList.size() == 7) {
+                System.out.println("Training using ham,ham2,spam...");
+                trainHamFreq.processMap(folderList.get(4));
+                trainHamFreq.processMap(folderList.get(5));
+                trainSpamFreq.processMap(folderList.get(6));
+            }
+
             probMap.proccessProbMap(trainHamFreq, trainSpamFreq);
 
             // TESTING:

@@ -29,7 +29,7 @@ public class TestFile {
     public void setActualClass(String value) { this.actualClass = value; }
 
     public boolean isHam() {
-        if(this.actualClass.equals("ham")) {
+        if(this.actualClass.equals("ham") || this.actualClass.equals("ham2") ) {
             return true;
         } else {
             return false;
